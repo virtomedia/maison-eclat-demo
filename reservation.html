@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Réserver un rendez-vous | Maison Éclat – Démonstration VirtoMedia</title>
+<meta name="description" content="Choisissez votre prestation, la date et l'heure souhaitées, puis envoyez votre demande de rendez-vous à Maison Éclat par WhatsApp. Page de démonstration VirtoMedia.">
+<meta property="og:title" content="Réserver un rendez-vous | Maison Éclat">
+<meta property="og:description" content="Demande de rendez-vous en trois étapes. Exemple de page de réservation créé par VirtoMedia.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_DZ">
+<meta name="theme-color" content="#f7f3ed">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f7f3ed;--paper:#fffdf9;--sand:#ece3d2;--gold:#b8996a;--gold-d:#7d6338;--ink:#211d19;--mute:#625a50;--line:#e2d7c3;--ok:#2f6b4f;--err:#a3321f;
+--serif:"Cormorant Garamond",Georgia,serif;--sans:"Manrope",system-ui,-apple-system,"Segoe UI",Arial,sans-serif}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--bg);color:var(--ink);line-height:1.6;font-size:16.5px;overflow-x:hidden}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--gold-d);outline-offset:3px;border-radius:6px}
+.wrap{width:min(1080px,100% - 36px);margin-inline:auto}
+.demo-bar{background:var(--ink);color:#e9dfcc;font-size:.82rem;text-align:center;padding:8px 14px}
+.demo-bar a{color:#fff}
+header{border-bottom:1px solid var(--line);background:var(--paper)}
+.top{display:flex;justify-content:space-between;align-items:center;min-height:68px;gap:12px}
+.brand{text-decoration:none;display:flex;align-items:center;gap:12px}
+.mono{width:40px;height:40px;border-radius:50%;background:var(--ink);color:var(--gold);display:grid;place-items:center;font-family:var(--serif);font-weight:600;font-size:1.15rem}
+.brand b{font-family:var(--serif);font-size:1.45rem;font-weight:600;line-height:1;display:block}
+.brand small{font-size:.68rem;color:var(--mute);letter-spacing:.08em}
+.back{font-size:.9rem;text-decoration:none;color:var(--mute);border-bottom:1px solid var(--line)}
+.back:hover{color:var(--ink)}
+.intro{padding:52px 0 30px}
+h1,h2{font-family:var(--serif);font-weight:600;line-height:1.08}
+h1{font-size:clamp(2.4rem,5.5vw,3.8rem);margin-bottom:12px}
+h1 em{font-weight:500}
+.intro p{color:var(--mute);max-width:58ch}
+.how{list-style:none;padding:0;margin-top:26px;display:grid;grid-template-columns:repeat(3,1fr);gap:14px;counter-reset:h}
+.how li{counter-increment:h;font-size:.9rem;color:var(--mute);border-top:2px solid var(--gold);padding-top:12px}
+.how li::before{content:counter(h)". ";font-family:var(--serif);font-size:1.2rem;font-weight:600;color:var(--gold-d)}
+.how b{color:var(--ink);display:inline}
+.how b::after{content:"";display:block}
+@media(max-width:700px){.how{grid-template-columns:1fr}}
+.grid>*{min-width:0}
+.grid{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:36px;align-items:start;padding-bottom:80px}
+.step{background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:28px;margin-bottom:18px}
+.step h2{font-size:1.65rem;display:flex;align-items:center;gap:12px;margin-bottom:6px}
+.n{width:30px;height:30px;border-radius:50%;background:var(--sand);color:var(--gold-d);font-family:var(--sans);font-size:.85rem;font-weight:700;display:grid;place-items:center;flex:none}
+.step.done .n{background:var(--ink);color:var(--gold)}
+.hint{font-size:.9rem;color:var(--mute);margin:0 0 18px 42px}
+.svcs{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.svc{display:block;width:100%;text-align:left;font:inherit;color:inherit;background:var(--bg);border:1.5px solid var(--line);border-radius:14px;padding:16px;cursor:pointer;transition:border-color .15s,background .15s}
+.svc:hover{border-color:var(--gold)}
+.svc[aria-pressed="true"]{border-color:var(--ink);background:#fff;box-shadow:inset 0 0 0 1px var(--ink)}
+.svc b{display:block;font-family:var(--serif);font-size:1.3rem;font-weight:600}
+.svc span{display:block;font-size:.84rem;color:var(--mute)}
+.svc .p{color:var(--ink);font-weight:600;margin-top:6px}
+.dates{display:flex;gap:8px;overflow-x:auto;padding:4px 2px 12px;scroll-snap-type:x proximity}
+.day{flex:none;width:64px;text-align:center;font:inherit;color:inherit;background:var(--bg);border:1.5px solid var(--line);border-radius:14px;padding:10px 4px;cursor:pointer;scroll-snap-align:start}
+.day small{display:block;font-size:.72rem;color:var(--mute);text-transform:capitalize}
+.day b{font-family:var(--serif);font-size:1.6rem;font-weight:600;line-height:1.1;display:block}
+.day[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.day[aria-pressed="true"] small{color:#d8cdb8}
+.day:disabled{opacity:.4;cursor:not-allowed;background:transparent;border-style:dashed}
+.slots{display:grid;grid-template-columns:repeat(auto-fill,minmax(88px,1fr));gap:10px;margin-top:6px}
+.slot{font:inherit;font-weight:600;background:var(--bg);border:1.5px solid var(--line);border-radius:999px;padding:10px;cursor:pointer;color:var(--ink)}
+.slot:hover{border-color:var(--gold)}
+.slot[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.empty{color:var(--mute);font-size:.95rem;background:var(--bg);border-radius:12px;padding:14px 16px}
+.f{display:grid;gap:16px}
+.f label{display:grid;gap:6px;font-weight:600;font-size:.92rem}
+.f label span{font-weight:400;color:var(--mute)}
+.f input,.f textarea{font:inherit;font-weight:400;padding:13px 14px;border:1.5px solid var(--line);border-radius:12px;background:var(--bg);color:var(--ink);width:100%}
+.f input:focus,.f textarea:focus{outline:none;border-color:var(--ink);background:#fff}
+.f [aria-invalid="true"]{border-color:var(--err)}
+.err{color:var(--err);font-size:.82rem;font-weight:500;min-height:0}
+.recap{position:static;background:var(--ink);color:#efe6d3;border-radius:22px;padding:28px}
+.recap h2{font-size:1.5rem;color:#fff;margin-bottom:16px}
+.recap dl{display:grid;gap:12px;margin-bottom:22px}
+.recap dt{font-size:.74rem;color:#b9ae98;letter-spacing:.06em;text-transform:uppercase}
+.recap dd{font-size:1rem;color:#fff}
+.recap dd.none{color:#8f8573;font-style:italic}
+.send{width:100%;font:inherit;font-weight:700;border:0;border-radius:999px;padding:15px;background:var(--gold);color:var(--ink);cursor:pointer;transition:background .15s,opacity .15s}
+.send:hover{background:#cdb07f}
+.send[disabled]{opacity:.45;cursor:not-allowed}
+.fine{font-size:.8rem;color:#b9ae98;margin-top:14px}
+.ok{display:none;margin-top:18px;background:#fff;color:var(--ink);border-radius:14px;padding:16px;font-size:.92rem}
+.ok.show{display:block}
+.ok b{color:var(--ok)}
+.ok button{font:inherit;font-size:.85rem;margin-top:10px;background:none;border:1px solid var(--ink);border-radius:99px;padding:6px 14px;cursor:pointer}
+.info{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;border-top:1px solid var(--line);padding:36px 0 56px;font-size:.92rem;color:var(--mute)}
+.info b{display:block;color:var(--ink);margin-bottom:4px}
+footer{background:var(--ink);color:#bfb5a1;text-align:center;font-size:.82rem;padding:24px 16px}
+footer a{color:#fff}
+@media(min-width:901px) and (min-height:820px){.recap{position:sticky;top:20px}}
+@media(max-width:900px){.grid{grid-template-columns:minmax(0,1fr)}.info{grid-template-columns:1fr}}
+@media(max-width:560px){.svcs{grid-template-columns:1fr}.step{padding:22px 18px}.hint{margin-left:0}.back{font-size:.82rem}.brand small{display:none}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<div class="demo-bar">Page de démonstration : informations, tarifs et créneaux fictifs. Créée par <a href="https://virtomedia.github.io/maison-eclat-demo/" >VirtoMedia</a>.</div>
+<header>
+<div class="wrap top">
+<a class="brand" href="index.html" aria-label="Maison Éclat – retour à l'accueil"><span class="mono">ME</span><span><b>Maison Éclat</b><small>SALON DE BEAUTÉ</small></span></a>
+<a class="back" href="index.html">Retour au site</a>
+</div>
+</header>
+
+<main class="wrap">
+<div class="intro">
+<h1>Choisissez votre <em>prochain rendez-vous.</em></h1>
+<p>Sélectionnez une prestation, la date et l'heure qui vous conviennent, puis envoyez votre demande au salon par WhatsApp. Votre rendez-vous est confirmé uniquement après validation par le salon.</p>
+<ol class="how">
+<li><b>Vous choisissez</b>Prestation, date et heure.</li>
+<li><b>Vous envoyez</b>Votre demande part par WhatsApp, déjà rédigée.</li>
+<li><b>Le salon confirme</b>Il valide ou vous propose un autre créneau.</li>
+</ol>
+</div>
+
+<div class="grid">
+<div>
+<section class="step" id="s1" aria-labelledby="t1">
+<h2 id="t1"><span class="n">1</span>Votre prestation</h2>
+<p class="hint">Les tarifs sont indicatifs et la durée est estimée.</p>
+<div class="svcs" id="svcs"></div>
+</section>
+
+<section class="step" id="s2" aria-labelledby="t2">
+<h2 id="t2"><span class="n">2</span>Date et heure</h2>
+<p class="hint">Ouvert du samedi au jeudi, de 09:00 à 18:00. Fermé le vendredi.</p>
+<div class="dates" id="dates" role="group" aria-label="Choisir une date"></div>
+<div class="slots" id="slots" role="group" aria-label="Choisir une heure"></div>
+</section>
+
+<section class="step" id="s3" aria-labelledby="t3">
+<h2 id="t3"><span class="n">3</span>Vos coordonnées</h2>
+<p class="hint">Pour que le salon puisse vous répondre.</p>
+<div class="f">
+<label>Nom et prénom<input id="name" autocomplete="name" placeholder="Ex. Amina B."><span class="err" id="e-name" aria-live="polite"></span></label>
+<label>Téléphone<input id="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="Ex. 0550 00 00 00"><span class="err" id="e-phone" aria-live="polite"></span></label>
+<label>Précision <span>(facultatif)</span><textarea id="note" rows="3" placeholder="Longueur des cheveux, souhait particulier, question…"></textarea></label>
+</div>
+</section>
+</div>
+
+<aside class="recap" aria-labelledby="rt">
+<h2 id="rt">Votre demande</h2>
+<dl>
+<div><dt>Prestation</dt><dd id="r-svc" class="none">Non choisie</dd></div>
+<div><dt>Tarif indicatif</dt><dd id="r-price" class="none">—</dd></div>
+<div><dt>Date et heure</dt><dd id="r-when" class="none">Non choisies</dd></div>
+<div><dt>Nom</dt><dd id="r-name" class="none">—</dd></div>
+</dl>
+<button class="send" id="send" type="button">Envoyer ma demande sur WhatsApp</button>
+<p class="fine">Votre message s'ouvre dans WhatsApp, prêt à envoyer. Vos informations servent uniquement à traiter votre demande.</p>
+<div class="ok" id="ok" role="status"><b>Votre message est prêt.</b> WhatsApp s'ouvre avec votre demande déjà écrite. <b>Appuyez sur « Envoyer » dans WhatsApp</b> pour la transmettre au salon, qui vous répondra pour confirmer. Si WhatsApp ne s'est pas ouvert, copiez le message ci-dessous.<br><button type="button" id="copy">Copier le message</button></div>
+</aside>
+</div>
+
+<div class="info">
+<p><b>Confirmation</b>Le salon vous répond pour confirmer ou proposer un autre créneau.</p>
+<p><b>Modification ou annulation</b>Écrivez au salon par WhatsApp dès que possible.</p>
+<p><b>Adresse</b>Alger, Algérie (adresse fictive de démonstration).</p>
+</div>
+</main>
+
+<footer>© <span id="yr">2026</span> Maison Éclat, marque fictive de démonstration. Site créé par <a href="https://virtomedia.github.io/maison-eclat-demo/">VirtoMedia</a>.</footer>
+
+<script>
+/* ===== CONFIGURATION : à modifier pour un vrai salon ===== */
+const CONFIG={
+  salon:"Maison Éclat",
+  whatsapp:"213777107154",        // numéro du salon, format international sans +
+  open:9*60, close:18*60,         // horaires en minutes (09:00 – 18:00)
+  step:30,                        // intervalle entre créneaux (minutes)
+  closedDays:[5],                 // 5 = vendredi (0 = dimanche)
+  daysAhead:14,
+  services:[
+    {id:"coupe",n:"Coupe femme",p:1500,d:45},
+    {id:"brushing",n:"Brushing",p:800,d:40},
+    {id:"coloration",n:"Coloration",p:3500,d:120},
+    {id:"balayage",n:"Balayage",p:6000,d:180},
+    {id:"soin",n:"Soin capillaire",p:2500,d:60},
+    {id:"manucure",n:"Manucure",p:1500,d:60}
+  ]
+};
+/* ======================================================= */
+const $=id=>document.getElementById(id);
+const S={svc:null,date:null,time:null};
+const fmtDA=n=>n.toLocaleString("fr-FR").replace(/\u202f|\u00a0/g," ")+" DA";
+const fmtDur=m=>m>=60?(Math.floor(m/60)+" h"+(m%60?" "+String(m%60).padStart(2,"0"):"")):m+" min";
+const hh=m=>String(Math.floor(m/60)).padStart(2,"0")+":"+String(m%60).padStart(2,"0");
+const dayName=d=>d.toLocaleDateString("fr-FR",{weekday:"long",day:"numeric",month:"long"});
+
+function renderSvcs(){
+  $("svcs").innerHTML="";
+  CONFIG.services.forEach(s=>{
+    const b=document.createElement("button");
+    b.type="button";b.className="svc";b.setAttribute("aria-pressed",S.svc===s.id);
+    b.innerHTML=`<b>${s.n}</b><span>Durée estimée : ${fmtDur(s.d)}</span><span class="p">À partir de ${fmtDA(s.p)}</span>`;
+    b.onclick=()=>{S.svc=s.id;S.time=null;renderSvcs();renderSlots();recap()};
+    $("svcs").appendChild(b);
+  });
+}
+const days=[];
+(function(){const t=new Date();t.setHours(0,0,0,0);for(let i=0;i<CONFIG.daysAhead;i++){const d=new Date(t);d.setDate(t.getDate()+i);days.push(d)}})();
+const key=d=>d.getFullYear()+"-"+(d.getMonth()+1)+"-"+d.getDate();
+function renderDates(){
+  $("dates").innerHTML="";
+  days.forEach(d=>{
+    const closed=CONFIG.closedDays.includes(d.getDay());
+    const b=document.createElement("button");
+    b.type="button";b.className="day";b.disabled=closed;
+    b.setAttribute("aria-pressed",S.date&&key(S.date)===key(d));
+    b.setAttribute("aria-label",dayName(d)+(closed?" (fermé)":""));
+    b.innerHTML=`<small>${d.toLocaleDateString("fr-FR",{weekday:"short"})}</small><b>${d.getDate()}</b><small>${d.toLocaleDateString("fr-FR",{month:"short"})}</small>`;
+    b.onclick=()=>{S.date=d;S.time=null;renderDates();renderSlots();recap()};
+    $("dates").appendChild(b);
+  });
+}
+function renderSlots(){
+  const box=$("slots");box.innerHTML="";
+  if(!S.svc||!S.date){box.innerHTML='<p class="empty" style="grid-column:1/-1">'+(S.svc?"Choisissez une date pour voir les heures disponibles.":"Choisissez d'abord une prestation, puis une date.")+"</p>";return}
+  const dur=CONFIG.services.find(s=>s.id===S.svc).d;
+  const now=new Date(),isToday=key(now)===key(S.date),nowMin=now.getHours()*60+now.getMinutes()+30;
+  let any=false;
+  for(let m=CONFIG.open;m+dur<=CONFIG.close;m+=CONFIG.step){
+    if(isToday&&m<nowMin)continue;
+    any=true;
+    const b=document.createElement("button");
+    b.type="button";b.className="slot";b.textContent=hh(m);b.setAttribute("aria-pressed",S.time===m);
+    b.onclick=()=>{S.time=m;renderSlots();recap()};
+    box.appendChild(b);
+  }
+  if(!any)box.innerHTML='<p class="empty" style="grid-column:1/-1">Aucun créneau indicatif ce jour-là pour cette prestation. Essayez une autre date.</p>';
+}
+function setR(id,txt){const e=$(id);e.textContent=txt||e.dataset.d;e.classList.toggle("none",!txt)}
+["r-svc","r-price","r-when","r-name"].forEach(i=>$(i).dataset.d=$(i).textContent);
+function recap(){
+  const s=CONFIG.services.find(x=>x.id===S.svc);
+  setR("r-svc",s&&s.n+" ("+fmtDur(s.d)+")");
+  setR("r-price",s&&"À partir de "+fmtDA(s.p));
+  setR("r-when",S.date&&S.time!==null&&s?dayName(S.date)+", "+hh(S.time)+" – "+hh(S.time+s.d):(S.date?dayName(S.date):""));
+  setR("r-name",$("name").value.trim());
+  $("s1").classList.toggle("done",!!S.svc);
+  $("s2").classList.toggle("done",!!S.date&&S.time!==null);
+}
+function validate(){
+  let ok=true;
+  const n=$("name").value.trim(),p=$("phone").value.replace(/[\s.\-()]/g,"");
+  const bad=(id,eid,cond,msg)=>{$(eid).textContent=cond?"":msg;$(id).setAttribute("aria-invalid",!cond);if(!cond)ok=false};
+  bad("name","e-name",n.length>=2,"Indiquez votre nom.");
+  bad("phone","e-phone",/^(\+?213|0)[5-7]\d{8}$/.test(p)||/^\+?\d{9,15}$/.test(p),"Indiquez un numéro de téléphone valide.");
+  return ok;
+}
+function message(){
+  const s=CONFIG.services.find(x=>x.id===S.svc);
+  const l=["Bonjour "+CONFIG.salon+", je souhaite demander un rendez-vous :","",
+   "Prestation : "+s.n+" (à partir de "+fmtDA(s.p)+")",
+   "Date : "+dayName(S.date),"Heure souhaitée : "+hh(S.time)+" (fin estimée "+hh(S.time+s.d)+")",
+   "Nom : "+$("name").value.trim(),"Téléphone : "+$("phone").value.trim()];
+  const note=$("note").value.trim();if(note)l.push("Précision : "+note);
+  l.push("","Merci de me confirmer la disponibilité.");
+  return l.join("\n");
+}
+$("send").onclick=()=>{
+  if(!S.svc){$("s1").scrollIntoView({behavior:"smooth"});return}
+  if(!S.date||S.time===null){$("s2").scrollIntoView({behavior:"smooth"});return}
+  if(!validate()){$("s3").scrollIntoView({behavior:"smooth"});return}
+  const msg=message();
+  $("ok").classList.add("show");
+  window.open("https://wa.me/"+CONFIG.whatsapp+"?text="+encodeURIComponent(msg),"_blank","noopener");
+  $("copy").onclick=()=>{(navigator.clipboard?navigator.clipboard.writeText(msg):Promise.reject()).then(()=>$("copy").textContent="Message copié").catch(()=>$("copy").textContent="Copie impossible")};
+};
+["name","phone","note"].forEach(i=>$(i).addEventListener("input",()=>{recap();if($(i).getAttribute("aria-invalid")==="true")validate()}));
+$("yr").textContent=new Date().getFullYear();
+renderSvcs();renderDates();renderSlots();recap();
+</script>
+</body>
+</html>
